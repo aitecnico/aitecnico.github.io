@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>William Fayette — Portfolio</title>
+  <meta name="description" content="Modern animated portfolio template" />
+  <style>
+    :root{
+      --bg:#0b0f14;          /* page background */
+      --panel:#0f1520;       /* cards/nav background */
+      --ink:#e6ecf2;         /* base text */
+      --muted:#94a3b8;       /* secondary text */
+      --brand:#60a5fa;       /* accent color */
+      --brand-2:#22d3ee;     /* secondary accent */
+      --ring: 0 0 0 2px var(--brand) inset;
+      --radius:20px;
+      --shadow: 0 12px 40px rgba(0,0,0,.35), 0 2px 10px rgba(0,0,0,.25);
+      --grid-gap: 1.2rem;
+      --maxw: 1120px;
+      --speed: .6s;          /* base animation speed */
+      --easing: cubic-bezier(.2,.8,.2,1);
+    }
+    [data-theme="light"]{
+      --bg:#f6f8fb;
+      --panel:#ffffff;
+      --ink:#0f172a;
+      --muted:#5b6b83;
+      --brand:#2563eb;
+      --brand-2:#06b6d4;
+      --shadow: 0 20px 50px rgba(2,6,23,.08), 0 2px 10px rgba(2,6,23,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Helvetica, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 15% -10%, rgba(96,165,250,.10), transparent 60%),
+        radial-gradient(1000px 500px at 110% 10%, rgba(34,211,238,.10), transparent 60%),
+        var(--bg);
+      background-attachment: fixed;
+    }
+    a{color:var(--brand); text-decoration:none; background:linear-gradient(90deg,var(--brand),var(--brand-2)); background-size:0 2px; background-repeat:no-repeat; background-position:0 100%; transition:background-size var(--speed) var(--easing)}
+    a:hover{background-size:100% 2px}
+    .wrap{max-width:var(--maxw); margin-inline:auto; padding:24px}
+    header{
+      position:sticky; top:0; z-index:6; backdrop-filter:saturate(140%) blur(10px);
+      background: color-mix(in oklab, var(--bg), transparent 70%);
+      border-bottom:1px solid color-mix(in oklab, var(--ink), transparent 92%);
+    }
+    .progress{position:absolute; left:0; right:0; bottom:0; height:2px; background:linear-gradient(90deg,var(--brand),var(--brand-2)); width:0}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:12px 24px}
+    .brand{display:flex; align-items:center; gap:.8rem; font-weight:800}
+    .brand .logo{width:36px; height:36px; border-radius:50%; background:conic-gradient(from 0deg, var(--brand), var(--brand-2), var(--brand)); box-shadow:var(--shadow); animation:spin 10s linear infinite}
+    @keyframes spin{to{transform:rotate(1turn)}}
+
+    .nav a{color:var(--ink); opacity:.92}
+    .nav a:hover{opacity:1}
+    .nav-links{display:flex; gap:1rem; align-items:center}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.7rem 1rem; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 90%, var(--brand-2) 10%), var(--panel)); color:var(--ink); border-radius:14px; box-shadow:var(--shadow); border:1px solid color-mix(in oklab, var(--ink), transparent 90%); transform:translateZ(0); transition: transform var(--speed) var(--easing), box-shadow var(--speed) var(--easing), outline var(--speed) var(--easing)}
+    .btn:hover{outline:var(--ring); transform:translateY(-2px)}
+
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:var(--grid-gap); align-items:center; padding:44px 24px}
+    .card{background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid color-mix(in oklab, var(--ink), transparent 90%); position:relative; overflow:hidden}
+    .card::after{content:""; position:absolute; inset:-2px; border-radius:calc(var(--radius) + 2px); background:conic-gradient(from 180deg, color-mix(in oklab, var(--brand) 30%, transparent), transparent 30%); filter:blur(18px); opacity:.25; pointer-events:none}
+    .pad{padding:26px}
+    .hero h1{font-size: clamp(30px, 5.2vw, 56px); line-height:1.05; margin:0 0 12px; background:linear-gradient(90deg,var(--ink), color-mix(in oklab, var(--ink) 80%, var(--brand) 20%)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+    .hero h1 .pulse{display:inline-block; animation: shimmer 3s var(--easing) infinite}
+    @keyframes shimmer{0%{filter:brightness(1)} 50%{filter:brightness(1.35)} 100%{filter:brightness(1)}}
+    .hero p{color:var(--muted); margin:0 0 16px}
+
+    .tags{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem}
+    .tag{font-size:.85rem; padding:.38rem .65rem; border-radius:999px; border:1px solid color-mix(in oklab, var(--ink), transparent 85%);
+      background:linear-gradient(180deg, color-mix(in oklab, var(--brand) 12%, var(--panel)), var(--panel));}
+
+    .avatar-card{display:grid; place-items:center; padding:18px}
+    .avatar{
+      width:min(340px, 100%); aspect-ratio:1/1; border-radius:26px; background: radial-gradient(60% 40% at 30% 20%, rgba(96,165,250,.18), transparent 40%),
+      radial-gradient(80% 50% at 80% 10%, rgba(34,211,238,.16), transparent 45%), linear-gradient(135deg, #1b2330, #10151c);
+      border:1px dashed color-mix(in oklab, var(--ink), transparent 70%); display:grid; place-items:center; color:var(--muted); text-align:center; padding:18px}
+
+    section{padding:12px 24px 44px}
+    section h2{margin: 10px 0 16px; font-size: clamp(22px, 3.6vw, 32px)}
+
+    .grid{display:grid; gap:var(--grid-gap)}
+    .projects{grid-template-columns: repeat(12, 1fr)}
+    .project{grid-column: span 4; display:flex; flex-direction:column; overflow:hidden; transition: transform var(--speed) var(--easing), border-color var(--speed) var(--easing)}
+    .project:hover{transform:translateY(-6px)}
+    .project .thumb{height:180px; background:linear-gradient(135deg, color-mix(in oklab, var(--brand) 24%, #0d1117), #0b0f14); display:grid; place-items:center; color:#fff; letter-spacing:.3px}
+    .project .meta{padding:16px}
+    .project h3{margin:0 0 6px; font-size:1.08rem}
+    .project p{margin:0; color:var(--muted); font-size:.95rem}
+    .project .stack{margin-top:10px; display:flex; gap:.4rem; flex-wrap:wrap}
+    .chip{font-size:.8rem; border:1px solid color-mix(in oklab, var(--ink), transparent 85%); padding:.25rem .5rem; border-radius:10px}
+
+    .filters{display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:12px}
+    .filters .btn{padding:.48rem .78rem}
+
+    .twocol{grid-template-columns:1fr 1fr}
+    .list{display:grid; gap:.5rem}
+    .list li{list-style:none; padding:10px 12px; border:1px solid color-mix(in oklab, var(--ink), transparent 88%); border-radius:12px; background:var(--panel)}
+
+    footer{padding:44px 24px; color:var(--muted)}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity var(--speed) var(--easing), transform var(--speed) var(--easing)}
+    .reveal.in{opacity:1; transform:none}
+
+    /* Responsive */
+    @media (max-width: 900px){ .hero{grid-template-columns:1fr;}
+      .project{grid-column: span 6}
+      .twocol{grid-template-columns:1fr}
+    }
+    @media (max-width: 600px){ .project{grid-column: span 12} }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav wrap">
+      <div class="brand"><div class="logo"></div><span>William Fayette</span></div>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div class="progress" id="progress"></div>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <h1>AV Engineer & Full‑Stack Developer</h1>
+        <p>Certified CTS + Software Engineering with a knack for AV integration, creative tech, and AI.</p>
+        <div class="tags">
+          <span class="tag">Crestron • Dante • QSC</span>
+          <span class="tag">Node.js • React • Python</span>
+          <span class="tag">Troubleshooting</span>
+          <span class="tag">Mentorship</span>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:.6rem;flex-wrap:wrap">
+          <a class="btn" href="#projects">See Projects</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="avatar">Add your photo</div>
+    </section>
+
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      <div class="grid projects">
+        <div class="project"><div class="thumb">Tesla Supercharger Locator</div><div class="meta"><h3>Map App</h3><p>Full‑stack React + Node app.</p></div></div>
+        <div class="project"><div class="thumb">Enterprise Huddle Rooms</div><div class="meta"><h3>AV Integration</h3><p>Crestron‑controlled rooms with QSC DSP and Dante routing.</p></div></div>
+        <div class="project"><div class="thumb">Diffusion Audio Tools</div><div class="meta"><h3>R&D</h3><p>Exploring diffusion‑based image + ML audio workflows.</p></div></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>I bring a unique mix of AV integration, software development, and creative tech. I love shipping reliable systems and mentoring teams.</p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>AV: Rack builds, commissioning, troubleshooting</li>
+        <li>Dev: JavaScript/TypeScript, React, Node, Python</li>
+        <li>Infra: GitHub, AWS/GCP, Linux/Mac/Windows</li>
+        <li>Soft: Mentorship, documentation, customer empathy</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:karishtech@gmail.com">karishtech@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/williamfayette">linkedin.com/in/williamfayette</a></p>
+      <p>GitHub: <a href="https://github.com/william-tecnico108">github.com/william-tecnico108</a></p>
+    </section>
+  </main>
+  <footer class="wrap"><small>© <span id="year"></span> William Fayette</small></footer>
+  <script>
+    // --- Theme toggle ---
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const THEME_KEY = 'wf_theme';
+    const saved = localStorage.getItem(THEME_KEY);
+    if(saved){ document.body.setAttribute('data-theme', saved) }
+    toggle.addEventListener('click', () => {
+      const next = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.body.setAttribute('data-theme', next);
+      localStorage.setItem(THEME_KEY, next);
+    });
+    if(!saved){ document.body.setAttribute('data-theme','dark') }
+
+    // --- Year ---
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Project filtering ---
+    const grid = document.getElementById('projectGrid');
+    const filterBtns = document.querySelectorAll('[data-filter]');
+    filterBtns.forEach(btn=>btn.addEventListener('click',()=>{
+      const q = btn.dataset.filter;
+      [...grid.children].forEach(card=>{
+        const tags = (card.getAttribute('data-tags')||'').split(',');
+        const show = q==='all' || tags.includes(q);
+        card.style.display = show ? 'flex' : 'none';
+      });
+      filterBtns.forEach(b=>b.style.outline='none');
+      btn.style.outline = 'var(--ring)';
+    }));
+
+    // --- Reveal on scroll ---
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target);} });
+    },{threshold:0.08});
+    document.querySelectorAll('.card, .project').forEach(el=>{
+      el.classList.add('reveal'); observer.observe(el);
+    });
+
+    // --- Scroll progress bar ---
+    const progress = document.getElementById('progress');
+    const setProgress = ()=>{
+      const scrollTop = window.scrollY;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const p = Math.max(0, Math.min(1, scrollTop / docH));
+      progress.style.width = (p*100).toFixed(2) + '%';
+    };
+    setProgress();
+    addEventListener('scroll', setProgress, {passive:true});
+
+    // --- Easy project injection (optional) ---
+    // window.injectProjects([...]) can still be used; now it also applies reveal.
+    window.injectProjects = function(projects){
+      grid.innerHTML = '';
+      projects.forEach(p=>{
+        const el = document.createElement('article');
+        el.className = 'project card reveal';
+        el.setAttribute('data-tags', p.tags);
+        el.innerHTML = `
+          <div class="thumb">${p.thumb||p.title}</div>
+          <div class="meta">
+            <h3><a href="${p.href||'#'}">${p.title}</a></h3>
+            <p>${p.desc||''}</p>
+            <div class="stack">${(p.stack||[]).map(s=>`<span class='chip'>${s}</span>`).join('')}</div>
+          </div>`;
+        grid.appendChild(el);
+        observer.observe(el);
+      });
+    }
+  </script>
+</body>
+</html>
