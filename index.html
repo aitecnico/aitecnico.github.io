@@ -357,12 +357,15 @@
       });
     }
 
-    // --- Hook up resume download (update this path to your hosted PDF) ---
-    document.getElementById('dl').addEventListener('click', (e)=>{
-      const url = 'https://docs.google.com/document/d/1UK5QNjoH6lthvz59_Pcp-Mc3RAXveq5U4IW3WSxRc98/edit?usp=sharing'; // TODO: replace with e.g. '/docs/William_Fayette_Resume.pdf'
-      if(url === '#'){ e.preventDefault(); alert('Add your resume PDF link in the code (search for "Hook up resume download")'); }
-    });
-  </script>
-</body>
-</html>
+    // Hook up resume download (update this path to your hosted PDF) ----
+document.getElementById('dl').addEventListener('click', (e)=>{
+    const url = 'https://drive.google.com/uc?export=download&id=1UK5ONj46ihtWsz9_Pc-Mc3RAXve9U41tW3WsRcSgQ';
+    if(url == '#'){ 
+        e.preventDefault(); 
+        alert('Add your resume PDF link in the code (search for "Hook up resume download")'); 
+    } else {
+        window.open(url, '_blank');  // opens in a new tab and starts download
+    }
+});
+
 
