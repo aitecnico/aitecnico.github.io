@@ -49,7 +49,6 @@
       background-attachment: fixed;
       transition:background .3s ease, color .3s ease;
     }
-    /* Gentle background for light mode so text always pops */
     body[data-theme="light"]{
       background:
         radial-gradient(1200px 600px at 10% -10%, rgba(37,99,235,.10), transparent 60%),
@@ -72,7 +71,7 @@
     .btn:hover{outline:var(--ring); transform:translateY(-2px)}
     .progress{position:absolute; left:0; right:0; bottom:0; height:2px; background:linear-gradient(90deg,var(--brand),var(--brand2)); width:0}
 
-    /* ---------- Mini theme switch with label + icons ---------- */
+    /* ---------- Theme switch ---------- */
     .theme-toggle{display:flex; align-items:center; gap:.5rem; font-size:.85rem; color:var(--muted)}
     .switch{position:relative; display:inline-block; width:44px; height:22px}
     .switch input{opacity:0; width:0; height:0}
@@ -161,7 +160,7 @@
     <section class="hero">
       <div class="card pad reveal">
         <h1>AV/IT Engineer & Full‑Stack Developer</h1>
-        <p>From AV integration to AI and app development, I design dependable systems with thoughtful user experiences.</p>
+        <p>From open‑source civic tech to AI and app development, I design dependable systems with thoughtful user experiences.</p>
         <div class="hero-badges">
           <span class="tag">Crestron • Dante • QSC</span>
           <span class="tag">React • Node • Python</span>
@@ -171,20 +170,14 @@
         <div style="margin-top:16px; display:flex; gap:.6rem; flex-wrap:wrap">
           <a class="btn" href="#projects">See Projects</a>
           <a class="btn" href="#contact">Contact</a>
-          <!-- Replace with your resume path (e.g. /docs/william_resume.pdf) -->
           <a class="btn" href="#" id="resumeBtn">Download Resume</a>
         </div>
       </div>
       <div class="card avatar-card reveal">
         <div class="avatar">
-          <!-- Replace with your photo:
-          <img src="/images/profile.jpg" alt="William Fayette headshot" style="width:100%;height:100%;object-fit:cover;border-radius:22px"/> -->
+          <!-- Replace with your photo -->
           <img src="/images/profile.jpg" alt="William Fayette headshot" style="width:105%;height:105%;object-fit:cover;border-radius:23px"/>
-<!--           <div>
-            <strong>Add your photo</strong>
-            <div style="font-size:.95rem; opacity:.8; margin-top:8px">Drop an <code>&lt;img&gt;</code> here</div>
-          </div>
-        </div> -->
+        </div>
       </div>
     </section>
 
@@ -198,29 +191,33 @@
         <button class="btn" data-filter="ai">AI</button>
       </div>
       <div class="grid projects" id="projectGrid">
-        <!-- Duplicate these or inject via JS. Update data-tags for filtering. -->
+        <!-- Tesla map -->
         <article class="project card reveal" data-tags="web">
           <div class="thumb">Tesla Supercharger Locator</div>
           <div class="meta">
-            <h3><a href="#">Map App</a></h3>
+            <h3><a href="#" target="_blank" rel="noopener">Map App</a></h3>
             <p>Full‑stack React + Node app to find chargers globally. MongoDB Atlas backend.</p>
             <div class="stack"><span class="chip">React</span><span class="chip">Node</span><span class="chip">MongoDB</span></div>
           </div>
         </article>
-        <article class="project card reveal" data-tags="av">
-          <div class="thumb">Enterprise Huddle Rooms</div>
+
+        <!-- Water the Trees (replaces AV Integration) -->
+        <article class="project card reveal" data-tags="web">
+          <div class="thumb">Water the Trees</div>
           <div class="meta">
-            <h3><a href="#">AV Integration</a></h3>
-            <p>Crestron‑controlled rooms with QSC DSP and Dante routing, documented and commissioned.</p>
-            <div class="stack"><span class="chip">Crestron</span><span class="chip">QSC</span><span class="chip">Dante</span></div>
+            <h3><a href="https://github.com/waterthetrees" target="_blank" rel="noopener">Open‑Source Collaboration</a></h3>
+            <p>Community‑run platform led by tree‑planting volunteers and Code for America SF engineers. Contributed features and fixes to support real‑world environmental impact.</p>
+            <div class="stack"><span class="chip">Open Source</span><span class="chip">Civic Tech</span><span class="chip">GitHub</span></div>
           </div>
         </article>
+
+        <!-- Chingu Voyages (replaces R&D) -->
         <article class="project card reveal" data-tags="ai">
-          <div class="thumb">Diffusion Audio Tools</div>
+          <div class="thumb">Chingu Voyages</div>
           <div class="meta">
-            <h3><a href="#">R&D</a></h3>
-            <p>Exploring diffusion‑based image + ML audio workflows with industry collaborators.</p>
-            <div class="stack"><span class="chip">Python</span><span class="chip">ML</span></div>
+            <h3><a href="https://github.com/chingu-voyages" target="_blank" rel="noopener">Collaborative Projects</a></h3>
+            <p>Professional, remote team projects showcasing practical skills, agile workflows, and strong GitHub collaboration across international time zones.</p>
+            <div class="stack"><span class="chip">Agile</span><span class="chip">Full‑Stack</span><span class="chip">Teamwork</span></div>
           </div>
         </article>
       </div>
@@ -230,17 +227,17 @@
     <section id="about" class="grid twocol">
       <div class="card pad reveal">
         <h2>About</h2>
-        <p>I bring a unique mix of AV integration, software development, and creative tech. I love shipping reliable systems and mentoring teams.</p>
+        <p>I bring a unique mix of <strong>open‑source civic tech</strong>, <strong>collaborative software development</strong>, and <strong>AV/IT engineering</strong>. I love shipping reliable systems, contributing to meaningful projects, and mentoring teams.</p>
         <ul class="list" style="margin-top:10px">
-          <li>CTS‑certified. Hands‑on with Crestron, Extron, QSC, BiAmp, Dante.</li>
-          <li>Built full‑stack apps with React, Node, Python, PostgreSQL/MongoDB.</li>
-          <li>Bilingual (English/Spanish). Comfortable with client‑facing comms.</li>
+          <li>Contributor: <a href="https://github.com/waterthetrees" target="_blank" rel="noopener">Water the Trees</a> — volunteer‑run, environmental open‑source project with Code for America SF engineers.</li>
+          <li>Professional teamwork via <a href="https://github.com/chingu-voyages" target="_blank" rel="noopener">Chingu Voyages</a> — real, collaborative builds that mirror industry workflows.</li>
+          <li>Built full‑stack apps with React, Node, Python, PostgreSQL/MongoDB; bilingual (English/Spanish); client‑facing and documentation‑first.</li>
         </ul>
       </div>
       <div id="skills" class="card pad reveal">
         <h2>Skills</h2>
         <ul class="list">
-          <li>AV: Rack builds, signal flow, commissioning, troubleshooting</li>
+          <li>AV/IT: Rack builds, signal flow, commissioning, troubleshooting</li>
           <li>Dev: JavaScript/TypeScript, React, Node, Python, REST</li>
           <li>Infra: GitHub, AWS/GCP, Linux/Mac/Windows</li>
           <li>Soft: Mentorship, documentation, customer empathy</li>
@@ -262,7 +259,6 @@
       <div class="card pad reveal">
         <h2>Resume</h2>
         <p>Grab a downloadable copy:</p>
-        <!-- Replace href with your hosted PDF path -->
         <a class="btn" id="dl" href="#">Download PDF</a>
         <p style="color:var(--muted); margin-top:8px">(Update the link once your resume PDF is hosted.)</p>
       </div>
@@ -274,7 +270,7 @@
   </footer>
 
   <script>
-    // --- Theme toggle (small switch + label) ---
+    // --- Theme toggle ---
     const toggle = document.getElementById('themeToggle');
     const modeLabel = document.getElementById('modeLabel');
     const THEME_KEY = 'wf_theme';
@@ -292,7 +288,6 @@
       document.body.setAttribute('data-theme', next);
       localStorage.setItem(THEME_KEY, next);
       modeLabel.textContent = next === 'light' ? 'Light Mode' : 'Dark Mode';
-      // ensure headers keep correct color after toggle
       document.querySelectorAll('section h2').forEach(h=>h.style.color='var(--ink)');
     });
 
@@ -332,8 +327,8 @@
 
     // --- Optional: quick tilt parallax on project cards ---
     const tilt = (el)=>{
-      const rect = el.getBoundingClientRect();
       el.addEventListener('mousemove', (e)=>{
+        const rect = el.getBoundingClientRect();
         const x = (e.clientX - rect.left)/rect.width - .5;
         const y = (e.clientY - rect.top)/rect.height - .5;
         el.style.transform = `rotateX(${-y*6}deg) rotateY(${x*6}deg) translateY(-6px)`;
@@ -342,7 +337,7 @@
     };
     document.querySelectorAll('.project').forEach(tilt);
 
-    // --- Easy project injection ---
+    // --- Easy project injection (kept for future use) ---
     window.injectProjects = function(projects){
       grid.innerHTML = '';
       projects.forEach(p=>{
@@ -370,3 +365,4 @@
   </script>
 </body>
 </html>
+
